@@ -7,6 +7,8 @@ declare global {
             apikey: string;
             useImperial: boolean;
             lang: string;
+            lat: number;
+            lon: number;
         }
     }
 }

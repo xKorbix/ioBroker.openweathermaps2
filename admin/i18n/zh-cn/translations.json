@@ -1,4 +1,6 @@
 {
     "apikey": "api密钥",
+    "lat": "纬度",
+    "lon": "经度",
     "useImperial": "使用英制单位"
 }

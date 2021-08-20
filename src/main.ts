@@ -31,15 +31,15 @@ class DataMapping {
             case Datatypes.number:
                 return {type: 'number', role: 'indicator'};
             case Datatypes.percentage:
-                return {type: 'number', role: 'indicator', unit: '%',};
+                return {type: 'number', role: 'indicator', unit_metric: '%', unit_imperial: '%'};
             case Datatypes.temperature:
-                return {type: 'number', role: 'indicator', unit: '°C',};
+                return {type: 'number', role: 'indicator', unit_metric: '°C', unit_imperial: '°F',};
             case Datatypes.pressure_hPa:
-                return {type: 'number', role: 'indicator', unit: 'hPa',};
+                return {type: 'number', role: 'indicator', unit_metric: 'hPa', unit_imperial: 'hPa',};
             case Datatypes.speed_ms:
-                return {type: 'number', role: 'indicator', unit: 'm/s',};
+                return {type: 'number', role: 'indicator', unit_metric: 'm/s', unit_imperial: 'mi/h',};
             case Datatypes.volume_mm:
-                return {type: 'number', role: 'indicator', unit: 'mm',};
+                return {type: 'number', role: 'indicator', unit_metric: 'mm', unit_imperial: 'mm',};
         }
         return null;
     }
@@ -75,6 +75,8 @@ export class DataDefinition {
 
 
 class Openweathermaps2 extends utils.Adapter {
+
+    languages: string[] = ['af', 'al', 'ar', 'az', 'bg', 'ca', 'cz', 'da', 'de', 'el', 'en', 'eu', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'kr', 'la', 'lt', 'mk', 'no', 'nl', 'pl', 'pt', 'pt', 'ro', 'ru', 'sv', 'sk', 'sl', 'sp', 'sr', 'th', 'tr', 'ua', 'uk', 'vi', 'zh_cn', 'zh_tw', 'zu'];
 
     currentDataConfig: DataDefinition = {
         datapoints: [
@@ -237,16 +239,10 @@ class Openweathermaps2 extends utils.Adapter {
      * Is called when databases are connected and adapter received configuration.
      */
     private async onReady(): Promise<void> {
-        // Initialize your adapter here
-        await this.getForeignObject('system.config', (err, systemConfig) => {
-            this.config.lang = systemConfig?.common.language || 'de';
-            this.log.info('config lang: ' + this.config.lang);
-        });
 
-        // The adapters config (in the instance object everything under the attribute "native") is accessible via
-        // this.config:
-        this.log.info('config apikey: ' + this.config.apikey);
-        this.log.info('config useImperial: ' + this.config.useImperial);
+        if (!await this.initConfig()) {
+            return;
+        }
 
         // In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
         //this.subscribeStates('testVariable');
@@ -259,9 +255,12 @@ class Openweathermaps2 extends utils.Adapter {
         await this.initCurrentData();
 
         let unit = (!this.config.useImperial) ? 'metric' : 'imperial';
-        let response = await this.getWeatherData(this.config.apikey, this.config.lang, unit);
+        let response = await this.getWeatherData(this.config.apikey, this.config.lang, unit, this.config.lat, this.config.lon);
 
-        if (response.data == null) return;
+        if (response.data == null) {
+            this.log.error('Response is invalid');
+            return;
+        }
 
         await this.fillData(response.data);
         await this.fillCurrentData(response.data);
@@ -325,14 +324,15 @@ class Openweathermaps2 extends utils.Adapter {
         //     }
         // }
 
-    private getWeatherData = async (apikey: string, lang: string, unit: string): Promise<AxiosResponse> => axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=49.6667&lon=10.4667&appid=' + apikey + '&units=' + unit + '&lang=' + lang)
-        .then((response): AxiosResponse => {
-            return response;
-        })
-        .catch((error) => {
-            this.log.error(error.response.data);
-            return error;
-        });
+    private getWeatherData = async (apikey: string, lang: string, unit: string, lat: number, lon: number): Promise<AxiosResponse> =>
+        axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + apikey + '&units=' + unit + '&lang=' + lang)
+            .then((response): AxiosResponse => {
+                return response;
+            })
+            .catch((error) => {
+                this.log.error(error.response.data);
+                return error;
+            });
 
     private async initializeObject(id: string, name: string, datatype: Datatypes) {
         let type_role = DataMapping.getTypeRoleUnit(datatype);
@@ -340,14 +340,18 @@ class Openweathermaps2 extends utils.Adapter {
             this.log.error(datatype + 'unknown!');
             return;
         }
-        name = (type_role.unit != null) ? name + ' in ' + type_role.unit : name;
-        await this.setObjectNotExistsAsync(id, {
+
+        let unit = (this.config.useImperial) ? type_role.unit_imperial : type_role.unit_metric;
+
+        name = (unit != null) ? name + ' in ' + unit : name;
+        //TODO: setObjectNotExistsAsync and extend only for changed units.
+        await this.extendObjectAsync(id, {
             type: 'state',
             common: {
                 name: name,
                 type: type_role.type,
                 role: type_role.role,
-                unit: type_role.unit,
+                unit: unit,
                 read: true,
                 write: false,
             },
@@ -403,6 +407,37 @@ class Openweathermaps2 extends utils.Adapter {
             await this.setStateAsync(this.currentDataConfig.root + '.' + item.name,
                 {val: DataMapping.parseData(item.datatype, rawvalue), ack: true});
         }
+    }
+
+    private async initConfig() {
+
+        if (this.config.lat == null || this.config.lon == null
+            || !isFinite(this.config.lat) || Math.abs(this.config.lat) > 90
+            || !isFinite(this.config.lon) || Math.abs(this.config.lon) > 180) {
+            this.log.error("Lat/Lon invalid.");
+            return false;
+        }
+        this.log.info('config lat, long: ' + this.config.lat + ', ' + this.config.lon);
+
+        await this.getForeignObject('system.config', (err, systemConfig) => {
+            this.config.lang = systemConfig?.common.language || 'de';
+            if (this.config.lang.length == 0 || this.languages.indexOf(this.config.lang) < 0)
+            {
+                this.log.error("Language invalid.");
+                return false;
+            }
+            this.log.info('config lang: ' + this.config.lang);
+        });
+
+        if(this.config.apikey.length == 0)
+        {
+            this.log.error("Apikey invalid.");
+            return false;
+        }
+        this.log.info('config apikey: ' + this.config.apikey);
+
+        this.log.info('config useImperial: ' + this.config.useImperial);
+        return true;
     }
 }
 

@@ -1,4 +1,6 @@
 {
     "apikey": "Chiave API",
+    "lat": "Latitudine",
+    "lon": "Longitudine",
     "useImperial": "Usa unità imperiali"
 }

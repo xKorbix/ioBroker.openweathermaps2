@@ -1,4 +1,6 @@
 {
     "apikey": "API sleutel",
+    "lat": "Breedtegraad",
+    "lon": "Lengtegraad",
     "useImperial": "Gebruik Engelse eenheden"
 }

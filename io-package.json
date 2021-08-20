@@ -82,7 +82,9 @@
     "native": {
         "apikey": "",
         "useImperial": false,
-        "lang": "de"
+        "lang": "de",
+        "lat": "49",
+        "lon": "10"
     },
     "objects": [],
     "instanceObjects": []

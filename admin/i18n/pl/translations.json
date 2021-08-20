@@ -1,4 +1,6 @@
 {
     "apikey": "Klucz API",
+    "lat": "Szerokość",
+    "lon": "Długość geograficzna",
     "useImperial": "Użyj jednostek imperialnych"
 }
