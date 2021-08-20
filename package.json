@@ -1,6 +1,6 @@
 {
   "name": "iobroker.openweathermaps2",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "List results of the openweathermaps onecall api",
   "author": {
     "name": "korbinian",
