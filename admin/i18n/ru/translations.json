@@ -1,5 +1,4 @@
 {
-    "openweathermaps2 adapter settings": "Настройки адаптера для openweathermaps2",
-    "option1": "Опция 1",
-    "option2": "option2"
+    "apikey": "Ключ API",
+    "useImperial": "Используйте британские единицы"
 }

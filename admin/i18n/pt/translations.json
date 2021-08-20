@@ -1,5 +1,4 @@
 {
-    "openweathermaps2 adapter settings": "Configurações do adaptador para openweathermaps2",
-    "option1": "Opção 1",
-    "option2": "opção 2"
+    "apikey": "Chave API",
+    "useImperial": "Use unidades imperiais"
 }

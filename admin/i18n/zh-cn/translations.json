@@ -1,5 +1,4 @@
 {
-    "openweathermaps2 adapter settings": "openweathermaps2 的适配器设置",
-    "option1": "选项 1",
-    "option2": "选项2"
+    "apikey": "api密钥",
+    "useImperial": "使用英制单位"
 }
