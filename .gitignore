@@ -7,7 +7,6 @@ nbproject
 
 # npm package files
 iobroker.*.tgz
-build/
 .create-adapter.json
 
 # ioBroker dev-server
