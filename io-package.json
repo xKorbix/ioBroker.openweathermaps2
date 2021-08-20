@@ -1,0 +1,76 @@
+{
+    "common": {
+        "name": "openweathermaps2",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "OpenWeatherMaps 2",
+            "de": "OpenWeatherMaps 2",
+            "ru": "OpenWeatherMaps 2",
+            "pt": "OpenWeatherMaps 2",
+            "nl": "OpenWeerkaarten 2",
+            "fr": "OpenWeatherMaps 2",
+            "it": "OpenWeatherMaps 2",
+            "es": "OpenWeatherMaps 2",
+            "pl": "OpenWeatherMaps 2",
+            "zh-cn": "OpenWeatherMaps 2"
+        },
+        "desc": {
+            "en": "List results of the openweathermaps onecall api",
+            "de": "Listenergebnisse der openweathermaps onecall api",
+            "ru": "Список результатов api openweathermaps onecall",
+            "pt": "Lista os resultados da API onecall openweathermaps",
+            "nl": "Lijst resultaten van de openweathermaps onecall api",
+            "fr": "Liste des résultats de l'API openweathermaps onecall",
+            "it": "Elenco risultati di openweathermaps onecall api",
+            "es": "Listar resultados de la api openweathermaps onecall",
+            "pl": "Lista wyników openweathermaps onecall api",
+            "zh-cn": "列出 openweathermaps onecall api 的结果"
+        },
+        "authors": [
+            "korbinian <korbinian@schuh-zechmeister.de>"
+        ],
+        "keywords": [
+            "weather",
+            "openweathermaps"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "build/main.js",
+        "icon": "openweathermaps2.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/xKorbix/ioBroker.openweathermaps2/master/admin/openweathermaps2.png",
+        "readme": "https://github.com/xKorbix/ioBroker.openweathermaps2/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "weather",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": []
+}

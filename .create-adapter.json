@@ -1,0 +1,39 @@
+{
+    "cli": true,
+    "adapterName": "openweathermaps2",
+    "title": "OpenWeatherMaps 2",
+    "description": "List results of the openweathermaps onecall api",
+    "keywords": [
+        "weather",
+        "openweathermaps"
+    ],
+    "expert": "no",
+    "features": [
+        "adapter"
+    ],
+    "adminFeatures": [],
+    "type": "weather",
+    "startMode": "daemon",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "connectionIndicator": "no",
+    "language": "TypeScript",
+    "adminReact": "no",
+    "tools": [],
+    "releaseScript": "yes",
+    "devServer": "yes",
+    "devServerPort": 8081,
+    "indentation": "Space (4)",
+    "quotes": "single",
+    "es6class": "yes",
+    "authorName": "korbinian",
+    "authorGithub": "xKorbix",
+    "authorEmail": "korbinian@schuh-zechmeister.de",
+    "gitRemoteProtocol": "HTTPS",
+    "gitCommit": "no",
+    "license": "MIT License",
+    "ci": "gh-actions",
+    "dependabot": "no",
+    "creatorVersion": "1.34.1",
+    "replay": "D:\\iobroker\\create-adapter\\.create-adapter.json"
+}
