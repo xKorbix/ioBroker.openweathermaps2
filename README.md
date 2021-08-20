@@ -104,7 +104,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 0.0.3 (2021-08-20)
 * (korbinian) remove ununsed default code and add first custom logic
 * (korbinian) disable integration tests for the first step
 

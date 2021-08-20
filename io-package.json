@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "openweathermaps2",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "news": {
+            "0.0.3": {
+                "en": "remove ununsed default code and add first custom logic\ndisable integration tests for the first step",
+                "de": "Entfernen Sie ungenutzten Standardcode und fügen Sie die erste benutzerdefinierte Logik hinzu\nIntegrationstests für den ersten Schritt deaktivieren",
+                "ru": "удалить неиспользованный код по умолчанию и добавить первую настраиваемую логику\nотключить интеграционные тесты для первого шага",
+                "pt": "remova o código padrão não executado e adicione a primeira lógica personalizada\ndesative os testes de integração para a primeira etapa",
+                "nl": "verwijder niet-unsed standaardcode en voeg eerste aangepaste logica toe\nschakel integratietests uit voor de eerste stap",
+                "fr": "supprimer le code par défaut non utilisé et ajouter la première logique personnalisée\ndésactiver les tests d'intégration pour la première étape",
+                "it": "rimuovi il codice predefinito non utilizzato e aggiungi la prima logica personalizzata\ndisabilitare i test di integrazione per il primo passaggio",
+                "es": "eliminar el código predeterminado sin usar y agregar la primera lógica personalizada\ndeshabilitar las pruebas de integración para el primer paso",
+                "pl": "usuń nieużywany kod domyślny i dodaj pierwszą niestandardową logikę\nwyłącz testy integracyjne w pierwszym kroku",
+                "zh-cn": "删除未使用的默认代码并添加第一个自定义逻辑\n第一步禁用集成测试"
+            },
             "0.0.2": {
                 "en": "* first release as an adapter-creation template\n\n## License\nMIT License\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
                 "de": "* Erstveröffentlichung als Vorlage zur Adaptererstellung\n\n## Lizenz\nMIT-Lizenz\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nDie Erlaubnis wird hiermit jeder Person, die eine Kopie erhält, kostenlos erteilt\ndieser Software und der zugehörigen Dokumentationsdateien (die \"Software\"), um\nan der Software uneingeschränkt, einschließlich und ohne Einschränkung der Rechte\nzu verwenden, kopieren, modifizieren, zusammenführen, veröffentlichen, verteilen, unterlizenzieren und/oder verkaufen\nKopien der Software zu erstellen und Personen, denen die Software zur Verfügung steht,\ndazu unter folgenden Bedingungen bereitgestellt:\n\nDer obige Urheberrechtshinweis und dieser Erlaubnishinweis müssen in allen enthalten sein\nKopien oder wesentliche Teile der Software.\n\nDIE SOFTWARE WIRD \"WIE BESEHEN\", OHNE JEGLICHE GEWÄHRLEISTUNG, AUSDRÜCKLICH ODER\nSTILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE GARANTIEN DER MARKTGÄNGIGKEIT,\nEIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG. IN KEINEM FALL SOLL DAS\nAUTOREN ODER URHEBERRECHTSINHABER HAFTEN FÜR JEGLICHE ANSPRÜCHE, SCHÄDEN ODER ANDERES\nHAFTUNG, OB AUS VERTRAGSHANDELN, UNERLAUBTER ODER ANDERWEITIG, AUS,\nAUSSER ODER IN VERBINDUNG MIT DER SOFTWARE ODER DER NUTZUNG ODER ANDEREN HANDELN IN DER\nSOFTWARE.",
