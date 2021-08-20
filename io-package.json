@@ -1,104 +1,116 @@
 {
-  "common": {
-    "name": "openweathermaps2",
-    "version": "0.0.3",
-    "news": {
-      "0.0.3": {
-        "en": "remove ununsed default code and add first custom logic\ndisable integration tests for the first step",
-        "de": "Entfernen Sie ungenutzten Standardcode und fügen Sie die erste benutzerdefinierte Logik hinzu\nIntegrationstests für den ersten Schritt deaktivieren",
-        "ru": "удалить неиспользованный код по умолчанию и добавить первую настраиваемую логику\nотключить интеграционные тесты для первого шага",
-        "pt": "remova o código padrão não executado e adicione a primeira lógica personalizada\ndesative os testes de integração para a primeira etapa",
-        "nl": "verwijder niet-unsed standaardcode en voeg eerste aangepaste logica toe\nschakel integratietests uit voor de eerste stap",
-        "fr": "supprimer le code par défaut non utilisé et ajouter la première logique personnalisée\ndésactiver les tests d'intégration pour la première étape",
-        "it": "rimuovi il codice predefinito non utilizzato e aggiungi la prima logica personalizzata\ndisabilitare i test di integrazione per il primo passaggio",
-        "es": "eliminar el código predeterminado sin usar y agregar la primera lógica personalizada\ndeshabilitar las pruebas de integración para el primer paso",
-        "pl": "usuń nieużywany kod domyślny i dodaj pierwszą niestandardową logikę\nwyłącz testy integracyjne w pierwszym kroku",
-        "zh-cn": "删除未使用的默认代码并添加第一个自定义逻辑\n第一步禁用集成测试"
-      },
-      "0.0.2": {
-        "en": "* first release as an adapter-creation template\n\n## License\nMIT License\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
-        "de": "* Erstveröffentlichung als Vorlage zur Adaptererstellung\n\n## Lizenz\nMIT-Lizenz\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nDie Erlaubnis wird hiermit jeder Person, die eine Kopie erhält, kostenlos erteilt\ndieser Software und der zugehörigen Dokumentationsdateien (die \"Software\"), um\nan der Software uneingeschränkt, einschließlich und ohne Einschränkung der Rechte\nzu verwenden, kopieren, modifizieren, zusammenführen, veröffentlichen, verteilen, unterlizenzieren und/oder verkaufen\nKopien der Software zu erstellen und Personen, denen die Software zur Verfügung steht,\ndazu unter folgenden Bedingungen bereitgestellt:\n\nDer obige Urheberrechtshinweis und dieser Erlaubnishinweis müssen in allen enthalten sein\nKopien oder wesentliche Teile der Software.\n\nDIE SOFTWARE WIRD \"WIE BESEHEN\", OHNE JEGLICHE GEWÄHRLEISTUNG, AUSDRÜCKLICH ODER\nSTILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE GARANTIEN DER MARKTGÄNGIGKEIT,\nEIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG. IN KEINEM FALL SOLL DAS\nAUTOREN ODER URHEBERRECHTSINHABER HAFTEN FÜR JEGLICHE ANSPRÜCHE, SCHÄDEN ODER ANDERES\nHAFTUNG, OB AUS VERTRAGSHANDELN, UNERLAUBTER ODER ANDERWEITIG, AUS,\nAUSSER ODER IN VERBINDUNG MIT DER SOFTWARE ODER DER NUTZUNG ODER ANDEREN HANDELN IN DER\nSOFTWARE.",
-        "ru": "* первый выпуск как шаблон для создания адаптера\n\n## Лицензия\nЛицензия MIT\n\nАвторские права (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nРазрешение предоставляется бесплатно любому лицу, получившему копию.\nэтого программного обеспечения и связанных файлов документации («Программное обеспечение») для работы с\nв Программном обеспечении без ограничений, включая, помимо прочего, права\nиспользовать, копировать, изменять, объединять, публиковать, распространять, сублицензировать и / или продавать\nкопий Программного обеспечения и разрешить лицам, которым\nпредоставлены для этого при соблюдении следующих условий:\n\nВышеупомянутое уведомление об авторских правах и это уведомление о разрешении должны быть включены во все\nкопии или существенные части Программного обеспечения.\n\nПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ЯВНЫХ.\nПОДРАЗУМЕВАЕМЫЕ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ, ГАРАНТИИ КОММЕРЧЕСКОЙ ЦЕННОСТИ,\nПРИГОДНОСТЬ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ И ЗАЩИТА ОТ ПРАВ. НИ В КОЕМ СЛУЧАЕ\nАВТОРЫ ИЛИ ДЕРЖАТЕЛИ АВТОРСКИХ ПРАВ НЕСУТ ОТВЕТСТВЕННОСТЬ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ, УБЫТКИ ИЛИ ДРУГИЕ\nОТВЕТСТВЕННОСТЬ, ВОЗНИКАЮЩАЯ ЛИ В РЕЗУЛЬТАТЕ ДОГОВОРА, ИЛИ ИНОСТРАННОМУ ИНОСТРАННОМУ ПОЛОЖЕНИЮ\nВНЕЗАПНО ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ ДЕЛАМИ\nПРОГРАММНОГО ОБЕСПЕЧЕНИЯ.",
-        "pt": "* primeiro lançamento como um modelo de criação de adaptador\n\n## Licença\nLicença MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nA permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia\ndeste software e arquivos de documentação associados (o \"Software\"), para lidar\nno Software sem restrição, incluindo, sem limitação, os direitos\npara usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e / ou vender\ncópias do Software, e para permitir que as pessoas a quem o Software é\nfornecido para fazê-lo, sujeito às seguintes condições:\n\nO aviso de direitos autorais acima e este aviso de permissão devem ser incluídos em todos\ncópias ou partes substanciais do Software.\n\nO SOFTWARE É FORNECIDO \"COMO ESTÁ\", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU\nIMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO,\nADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA E NÃO VIOLAÇÃO. EM NENHUMA HIPÓTESE O\nAUTORES OU TITULARES DE DIREITOS AUTORAIS SÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTROS\nRESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTE DE,\nFORA DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO\nPROGRAMAS.",
-        "nl": "* eerste release als sjabloon voor het maken van adapters\n\n## Licentie\nMIT-licentie\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nHierbij wordt gratis toestemming verleend aan eenieder die een exemplaar verkrijgt\nvan deze software en bijbehorende documentatiebestanden (de \"Software\"), om\nin de Software zonder beperking, inclusief maar niet beperkt tot de rechten\ngebruiken, kopiëren, wijzigen, samenvoegen, publiceren, distribueren, in sublicentie geven en/of verkopen\nkopieën van de Software, en om personen aan wie de Software is\ndaartoe ingericht, onder de volgende voorwaarden:\n\nDe bovenstaande copyrightkennisgeving en deze toestemmingskennisgeving zullen in alle\nkopieën of substantiële delen van de Software.\n\nDE SOFTWARE WORDT GELEVERD \"AS IS\", ZONDER ENIGE GARANTIE, EXPLICIET OF\nIMPLICIET, INCLUSIEF MAAR NIET BEPERKT TOT DE GARANTIES VAN VERKOOPBAARHEID,\nGESCHIKTHEID VOOR EEN BEPAALD DOEL EN NIET-INBREUK. IN GEEN GEVAL ZAL DE\nAUTEURS OF AUTEURSRECHTHOUDERS ZIJN AANSPRAKELIJK VOOR ENIGE CLAIM, SCHADE OF ANDERE\nAANSPRAKELIJKHEID, ONGEACHT UIT EEN OVEREENKOMST, ONRECHTMATIGHEID OF ANDERSZINS, VOORTVLOEIEND UIT,\nBUITEN OF IN VERBAND MET DE SOFTWARE OF HET GEBRUIK OF ANDERE HANDELINGEN IN DE\nSOFTWARE.",
-        "fr": "* première version en tant que modèle de création d'adaptateur\n\n## Licence\nLicence MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPermission est accordée, sans frais, à toute personne obtenant une copie\nde ce logiciel et des fichiers de documentation associés (le \"Logiciel\"), pour traiter\ndans le Logiciel sans restriction, y compris, sans limitation, les droits\nutiliser, copier, modifier, fusionner, publier, distribuer, sous-licencier et/ou vendre\ncopies du Logiciel, et de permettre aux personnes auxquelles le Logiciel est\nfourni à cet effet, sous réserve des conditions suivantes :\n\nL'avis de droit d'auteur ci-dessus et cet avis d'autorisation doivent être inclus dans tous les\ndes copies ou des parties substantielles du Logiciel.\n\nLE LOGICIEL EST FOURNI « EN L'ÉTAT », SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU\nIMPLICITE, Y COMPRIS MAIS NON LIMITÉ AUX GARANTIES DE QUALITÉ MARCHANDE,\nAPTITUDE A UN USAGE PARTICULIER ET NON CONTREFAÇON. EN AUCUN CAS, LE\nLES AUTEURS OU TITULAIRES DE DROITS D'AUTEUR SERONT RESPONSABLES DE TOUTE RÉCLAMATION, DOMMAGES OU AUTRE\nRESPONSABILITÉ, QUE CE SOIT DANS UNE ACTION CONTRACTUELLE, DÉLICTUELLE OU AUTRE, DÉCOULANT DE,\nHORS OU EN RELATION AVEC LE LOGICIEL OU L'UTILISATION OU D'AUTRES OPÉRATIONS DANS LE\nLOGICIEL.",
-        "it": "* prima versione come modello per la creazione di adattatori\n\n## Licenza\nLicenza MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nL'autorizzazione è concessa, a titolo gratuito, a chiunque ne ottenga una copia\ndi questo software e dei file di documentazione associati (il \"Software\"), per trattare\nnel Software senza restrizioni, inclusi senza limitazione i diritti\nutilizzare, copiare, modificare, unire, pubblicare, distribuire, concedere in sublicenza e/o vendere\ncopie del Software e per consentire alle persone a cui il Software è\narredato a tal fine, alle seguenti condizioni:\n\nL'avviso di copyright di cui sopra e questo avviso di autorizzazione devono essere inclusi in tutto\ncopie o parti sostanziali del Software.\n\nIL SOFTWARE VIENE FORNITO \"COS COM'È\", SENZA GARANZIE DI ALCUN TIPO, ESPRESSE O\nIMPLICITA, COMPRESE MA NON LIMITATE ALLE GARANZIE DI COMMERCIABILITÀ,\nIDONEITÀ A UNO SCOPO PARTICOLARE E NON VIOLAZIONE. IN NESSUN CASO IL\nGLI AUTORI O I TITOLARI DEL COPYRIGHT SARANNO RESPONSABILI PER QUALSIASI RECLAMO, DANNI O ALTRO\nRESPONSABILITÀ, SIA IN AZIONE CONTRATTUALE, ILLECITO O ALTRO, DERIVANTE DA,\nFUORI O IN CONNESSIONE CON IL SOFTWARE O L'UTILIZZO O ALTRI TRATTAMENTI IN\nSOFTWARE.",
-        "es": "* primer lanzamiento como plantilla de creación de adaptadores\n\n## Licencia\nLicencia MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPor la presente se otorga permiso, sin cargo, a cualquier persona que obtenga una copia.\nde este software y los archivos de documentación asociados (el \"Software\"), para tratar\nen el Software sin restricción, incluidos, entre otros, los derechos\npara usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y / o vender\ncopias del Software, y para permitir a las personas a las que el Software es\namueblado para ello, sujeto a las siguientes condiciones:\n\nEl aviso de copyright anterior y este aviso de permiso se incluirán en todos\ncopias o partes sustanciales del Software.\n\nEL SOFTWARE SE PROPORCIONA \"TAL CUAL\", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O\nIMPLÍCITAS, INCLUIDAS PERO NO LIMITADAS A LAS GARANTÍAS DE COMERCIABILIDAD,\nAPTITUD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO\nLOS AUTORES O TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE CUALQUIER RECLAMO, DAÑOS U OTROS\nRESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRO MODO, QUE SURJA DE,\nFUERA O EN RELACIÓN CON EL SOFTWARE O EL USO U OTROS NEGOCIOS EN EL\nSOFTWARE.",
-        "pl": "* pierwsze wydanie jako szablon do tworzenia adapterów\n\n## Licencja\nLicencja MIT\n\nPrawa autorskie (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nNiniejszym udziela się nieodpłatnego zezwolenia każdej osobie otrzymującej kopię\ntego oprogramowania i związanych z nim plików dokumentacji („Oprogramowanie”), aby handlować\nw Oprogramowaniu bez ograniczeń, w tym bez ograniczeń praw\nużywać, kopiować, modyfikować, łączyć, publikować, rozpowszechniać, udzielać sublicencji i/lub sprzedawać\nkopie Oprogramowania oraz do zezwolenia osobom, dla których Oprogramowanie jest\nw tym celu, z zastrzeżeniem następujących warunków:\n\nPowyższa informacja o prawach autorskich i niniejsza informacja o pozwoleniu będą zawarte we wszystkich\nkopie lub istotne części Oprogramowania.\n\nOPROGRAMOWANIE JEST DOSTARCZANE „TAK JAK JEST”, BEZ JAKICHKOLWIEK GWARANCJI, WYRAŹNYCH LUB\nDOROZUMIANYCH, W TYM MIĘDZY INNYMI GWARANCJE WARTOŚCI HANDLOWEJ,\nPRZYDATNOŚĆ DO OKREŚLONEGO CELU I NIENARUSZALNOŚCI. W ŻADNYM WYPADKU NIE\nAUTORZY LUB POSIADACZE PRAW AUTORSKICH PONOSZĄ ODPOWIEDZIALNOŚĆ ZA WSZELKIE ROSZCZENIA, SZKODY LUB INNE\nODPOWIEDZIALNOŚĆ UMOWNA, CZYNNA LUB W INNY SPOSÓB, WYNIKAJĄCA Z,\nNIE ZWIĄZANE Z OPROGRAMOWANIEM LUB KORZYSTANIEM LUB INNYMI CZYNNOŚCIAMI W\nOPROGRAMOWANIE.",
-        "zh-cn": "* 作为适配器创建模板首次发布\n\n＃＃ 执照\n麻省理工学院执照\n\n版权所有 (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\n特此许可免费授予任何获得副本的人\n本软件和相关文档文件（“软件”），以处理\n在软件中不受限制，包括但不限于权利\n使用、复制、修改、合并、发布、分发、再许可和/或出售\n软件的副本，并允许软件所属的人\n提供这样做，但须符合以下条件：\n\n以上版权声明和本许可声明应包含在所有\n本软件的副本或重要部分。\n\n该软件“按原样”提供，不提供任何形式的明示或保证\n暗示，包括但不限于适销性保证，\n适用于特定目的且不侵权。在任何情况下都不得\n作者或版权持有人应对任何索赔、损害或其他\n责任，无论是在合同诉讼、侵权行为或其他方面，由以下原因引起的，\n与本软件或本软件中的使用或其他交易无关或与之相关\n软件。"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版"
-      }
+    "common": {
+        "name": "openweathermaps2",
+        "version": "0.0.4",
+        "news": {
+            "0.0.4": {
+                "en": "added schedule to io-package\nremoved build from gitignore",
+                "de": "Zeitplan zum io-Paket hinzugefügt\nBuild von gitignore entfernt",
+                "ru": "добавлено расписание в io-package\nудалена сборка из gitignore",
+                "pt": "adicionado cronograma ao pacote io\ncompilação removida do gitignore",
+                "nl": "schema toegevoegd aan io-pakket\nverwijderde build van gitignore",
+                "fr": "calendrier ajouté à io-package\nsuppression de la construction de gitignore",
+                "it": "programma aggiunto al pacchetto io\nbuild rimossa da gitignore",
+                "es": "horario agregado al paquete io\ncompilación eliminada de gitignore",
+                "pl": "dodano harmonogram do pakietu io\nusunięto kompilację z gitignore",
+                "zh-cn": "向 io-package 添加时间表\n从 gitignore 中删除构建"
+            },
+            "0.0.3": {
+                "en": "remove ununsed default code and add first custom logic\ndisable integration tests for the first step",
+                "de": "Entfernen Sie ungenutzten Standardcode und fügen Sie die erste benutzerdefinierte Logik hinzu\nIntegrationstests für den ersten Schritt deaktivieren",
+                "ru": "удалить неиспользованный код по умолчанию и добавить первую настраиваемую логику\nотключить интеграционные тесты для первого шага",
+                "pt": "remova o código padrão não executado e adicione a primeira lógica personalizada\ndesative os testes de integração para a primeira etapa",
+                "nl": "verwijder niet-unsed standaardcode en voeg eerste aangepaste logica toe\nschakel integratietests uit voor de eerste stap",
+                "fr": "supprimer le code par défaut non utilisé et ajouter la première logique personnalisée\ndésactiver les tests d'intégration pour la première étape",
+                "it": "rimuovi il codice predefinito non utilizzato e aggiungi la prima logica personalizzata\ndisabilitare i test di integrazione per il primo passaggio",
+                "es": "eliminar el código predeterminado sin usar y agregar la primera lógica personalizada\ndeshabilitar las pruebas de integración para el primer paso",
+                "pl": "usuń nieużywany kod domyślny i dodaj pierwszą niestandardową logikę\nwyłącz testy integracyjne w pierwszym kroku",
+                "zh-cn": "删除未使用的默认代码并添加第一个自定义逻辑\n第一步禁用集成测试"
+            },
+            "0.0.2": {
+                "en": "* first release as an adapter-creation template\n\n## License\nMIT License\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
+                "de": "* Erstveröffentlichung als Vorlage zur Adaptererstellung\n\n## Lizenz\nMIT-Lizenz\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nDie Erlaubnis wird hiermit jeder Person, die eine Kopie erhält, kostenlos erteilt\ndieser Software und der zugehörigen Dokumentationsdateien (die \"Software\"), um\nan der Software uneingeschränkt, einschließlich und ohne Einschränkung der Rechte\nzu verwenden, kopieren, modifizieren, zusammenführen, veröffentlichen, verteilen, unterlizenzieren und/oder verkaufen\nKopien der Software zu erstellen und Personen, denen die Software zur Verfügung steht,\ndazu unter folgenden Bedingungen bereitgestellt:\n\nDer obige Urheberrechtshinweis und dieser Erlaubnishinweis müssen in allen enthalten sein\nKopien oder wesentliche Teile der Software.\n\nDIE SOFTWARE WIRD \"WIE BESEHEN\", OHNE JEGLICHE GEWÄHRLEISTUNG, AUSDRÜCKLICH ODER\nSTILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE GARANTIEN DER MARKTGÄNGIGKEIT,\nEIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG. IN KEINEM FALL SOLL DAS\nAUTOREN ODER URHEBERRECHTSINHABER HAFTEN FÜR JEGLICHE ANSPRÜCHE, SCHÄDEN ODER ANDERES\nHAFTUNG, OB AUS VERTRAGSHANDELN, UNERLAUBTER ODER ANDERWEITIG, AUS,\nAUSSER ODER IN VERBINDUNG MIT DER SOFTWARE ODER DER NUTZUNG ODER ANDEREN HANDELN IN DER\nSOFTWARE.",
+                "ru": "* первый выпуск как шаблон для создания адаптера\n\n## Лицензия\nЛицензия MIT\n\nАвторские права (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nРазрешение предоставляется бесплатно любому лицу, получившему копию.\nэтого программного обеспечения и связанных файлов документации («Программное обеспечение») для работы с\nв Программном обеспечении без ограничений, включая, помимо прочего, права\nиспользовать, копировать, изменять, объединять, публиковать, распространять, сублицензировать и / или продавать\nкопий Программного обеспечения и разрешить лицам, которым\nпредоставлены для этого при соблюдении следующих условий:\n\nВышеупомянутое уведомление об авторских правах и это уведомление о разрешении должны быть включены во все\nкопии или существенные части Программного обеспечения.\n\nПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ЯВНЫХ.\nПОДРАЗУМЕВАЕМЫЕ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ, ГАРАНТИИ КОММЕРЧЕСКОЙ ЦЕННОСТИ,\nПРИГОДНОСТЬ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ И ЗАЩИТА ОТ ПРАВ. НИ В КОЕМ СЛУЧАЕ\nАВТОРЫ ИЛИ ДЕРЖАТЕЛИ АВТОРСКИХ ПРАВ НЕСУТ ОТВЕТСТВЕННОСТЬ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ, УБЫТКИ ИЛИ ДРУГИЕ\nОТВЕТСТВЕННОСТЬ, ВОЗНИКАЮЩАЯ ЛИ В РЕЗУЛЬТАТЕ ДОГОВОРА, ИЛИ ИНОСТРАННОМУ ИНОСТРАННОМУ ПОЛОЖЕНИЮ\nВНЕЗАПНО ИЛИ В СВЯЗИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ИЛИ ДРУГИМИ ДЕЛАМИ\nПРОГРАММНОГО ОБЕСПЕЧЕНИЯ.",
+                "pt": "* primeiro lançamento como um modelo de criação de adaptador\n\n## Licença\nLicença MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nA permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia\ndeste software e arquivos de documentação associados (o \"Software\"), para lidar\nno Software sem restrição, incluindo, sem limitação, os direitos\npara usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e / ou vender\ncópias do Software, e para permitir que as pessoas a quem o Software é\nfornecido para fazê-lo, sujeito às seguintes condições:\n\nO aviso de direitos autorais acima e este aviso de permissão devem ser incluídos em todos\ncópias ou partes substanciais do Software.\n\nO SOFTWARE É FORNECIDO \"COMO ESTÁ\", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU\nIMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO,\nADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA E NÃO VIOLAÇÃO. EM NENHUMA HIPÓTESE O\nAUTORES OU TITULARES DE DIREITOS AUTORAIS SÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTROS\nRESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTE DE,\nFORA DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO\nPROGRAMAS.",
+                "nl": "* eerste release als sjabloon voor het maken van adapters\n\n## Licentie\nMIT-licentie\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nHierbij wordt gratis toestemming verleend aan eenieder die een exemplaar verkrijgt\nvan deze software en bijbehorende documentatiebestanden (de \"Software\"), om\nin de Software zonder beperking, inclusief maar niet beperkt tot de rechten\ngebruiken, kopiëren, wijzigen, samenvoegen, publiceren, distribueren, in sublicentie geven en/of verkopen\nkopieën van de Software, en om personen aan wie de Software is\ndaartoe ingericht, onder de volgende voorwaarden:\n\nDe bovenstaande copyrightkennisgeving en deze toestemmingskennisgeving zullen in alle\nkopieën of substantiële delen van de Software.\n\nDE SOFTWARE WORDT GELEVERD \"AS IS\", ZONDER ENIGE GARANTIE, EXPLICIET OF\nIMPLICIET, INCLUSIEF MAAR NIET BEPERKT TOT DE GARANTIES VAN VERKOOPBAARHEID,\nGESCHIKTHEID VOOR EEN BEPAALD DOEL EN NIET-INBREUK. IN GEEN GEVAL ZAL DE\nAUTEURS OF AUTEURSRECHTHOUDERS ZIJN AANSPRAKELIJK VOOR ENIGE CLAIM, SCHADE OF ANDERE\nAANSPRAKELIJKHEID, ONGEACHT UIT EEN OVEREENKOMST, ONRECHTMATIGHEID OF ANDERSZINS, VOORTVLOEIEND UIT,\nBUITEN OF IN VERBAND MET DE SOFTWARE OF HET GEBRUIK OF ANDERE HANDELINGEN IN DE\nSOFTWARE.",
+                "fr": "* première version en tant que modèle de création d'adaptateur\n\n## Licence\nLicence MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPermission est accordée, sans frais, à toute personne obtenant une copie\nde ce logiciel et des fichiers de documentation associés (le \"Logiciel\"), pour traiter\ndans le Logiciel sans restriction, y compris, sans limitation, les droits\nutiliser, copier, modifier, fusionner, publier, distribuer, sous-licencier et/ou vendre\ncopies du Logiciel, et de permettre aux personnes auxquelles le Logiciel est\nfourni à cet effet, sous réserve des conditions suivantes :\n\nL'avis de droit d'auteur ci-dessus et cet avis d'autorisation doivent être inclus dans tous les\ndes copies ou des parties substantielles du Logiciel.\n\nLE LOGICIEL EST FOURNI « EN L'ÉTAT », SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU\nIMPLICITE, Y COMPRIS MAIS NON LIMITÉ AUX GARANTIES DE QUALITÉ MARCHANDE,\nAPTITUDE A UN USAGE PARTICULIER ET NON CONTREFAÇON. EN AUCUN CAS, LE\nLES AUTEURS OU TITULAIRES DE DROITS D'AUTEUR SERONT RESPONSABLES DE TOUTE RÉCLAMATION, DOMMAGES OU AUTRE\nRESPONSABILITÉ, QUE CE SOIT DANS UNE ACTION CONTRACTUELLE, DÉLICTUELLE OU AUTRE, DÉCOULANT DE,\nHORS OU EN RELATION AVEC LE LOGICIEL OU L'UTILISATION OU D'AUTRES OPÉRATIONS DANS LE\nLOGICIEL.",
+                "it": "* prima versione come modello per la creazione di adattatori\n\n## Licenza\nLicenza MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nL'autorizzazione è concessa, a titolo gratuito, a chiunque ne ottenga una copia\ndi questo software e dei file di documentazione associati (il \"Software\"), per trattare\nnel Software senza restrizioni, inclusi senza limitazione i diritti\nutilizzare, copiare, modificare, unire, pubblicare, distribuire, concedere in sublicenza e/o vendere\ncopie del Software e per consentire alle persone a cui il Software è\narredato a tal fine, alle seguenti condizioni:\n\nL'avviso di copyright di cui sopra e questo avviso di autorizzazione devono essere inclusi in tutto\ncopie o parti sostanziali del Software.\n\nIL SOFTWARE VIENE FORNITO \"COS COM'È\", SENZA GARANZIE DI ALCUN TIPO, ESPRESSE O\nIMPLICITA, COMPRESE MA NON LIMITATE ALLE GARANZIE DI COMMERCIABILITÀ,\nIDONEITÀ A UNO SCOPO PARTICOLARE E NON VIOLAZIONE. IN NESSUN CASO IL\nGLI AUTORI O I TITOLARI DEL COPYRIGHT SARANNO RESPONSABILI PER QUALSIASI RECLAMO, DANNI O ALTRO\nRESPONSABILITÀ, SIA IN AZIONE CONTRATTUALE, ILLECITO O ALTRO, DERIVANTE DA,\nFUORI O IN CONNESSIONE CON IL SOFTWARE O L'UTILIZZO O ALTRI TRATTAMENTI IN\nSOFTWARE.",
+                "es": "* primer lanzamiento como plantilla de creación de adaptadores\n\n## Licencia\nLicencia MIT\n\nCopyright (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nPor la presente se otorga permiso, sin cargo, a cualquier persona que obtenga una copia.\nde este software y los archivos de documentación asociados (el \"Software\"), para tratar\nen el Software sin restricción, incluidos, entre otros, los derechos\npara usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y / o vender\ncopias del Software, y para permitir a las personas a las que el Software es\namueblado para ello, sujeto a las siguientes condiciones:\n\nEl aviso de copyright anterior y este aviso de permiso se incluirán en todos\ncopias o partes sustanciales del Software.\n\nEL SOFTWARE SE PROPORCIONA \"TAL CUAL\", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O\nIMPLÍCITAS, INCLUIDAS PERO NO LIMITADAS A LAS GARANTÍAS DE COMERCIABILIDAD,\nAPTITUD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO\nLOS AUTORES O TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE CUALQUIER RECLAMO, DAÑOS U OTROS\nRESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRO MODO, QUE SURJA DE,\nFUERA O EN RELACIÓN CON EL SOFTWARE O EL USO U OTROS NEGOCIOS EN EL\nSOFTWARE.",
+                "pl": "* pierwsze wydanie jako szablon do tworzenia adapterów\n\n## Licencja\nLicencja MIT\n\nPrawa autorskie (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\nNiniejszym udziela się nieodpłatnego zezwolenia każdej osobie otrzymującej kopię\ntego oprogramowania i związanych z nim plików dokumentacji („Oprogramowanie”), aby handlować\nw Oprogramowaniu bez ograniczeń, w tym bez ograniczeń praw\nużywać, kopiować, modyfikować, łączyć, publikować, rozpowszechniać, udzielać sublicencji i/lub sprzedawać\nkopie Oprogramowania oraz do zezwolenia osobom, dla których Oprogramowanie jest\nw tym celu, z zastrzeżeniem następujących warunków:\n\nPowyższa informacja o prawach autorskich i niniejsza informacja o pozwoleniu będą zawarte we wszystkich\nkopie lub istotne części Oprogramowania.\n\nOPROGRAMOWANIE JEST DOSTARCZANE „TAK JAK JEST”, BEZ JAKICHKOLWIEK GWARANCJI, WYRAŹNYCH LUB\nDOROZUMIANYCH, W TYM MIĘDZY INNYMI GWARANCJE WARTOŚCI HANDLOWEJ,\nPRZYDATNOŚĆ DO OKREŚLONEGO CELU I NIENARUSZALNOŚCI. W ŻADNYM WYPADKU NIE\nAUTORZY LUB POSIADACZE PRAW AUTORSKICH PONOSZĄ ODPOWIEDZIALNOŚĆ ZA WSZELKIE ROSZCZENIA, SZKODY LUB INNE\nODPOWIEDZIALNOŚĆ UMOWNA, CZYNNA LUB W INNY SPOSÓB, WYNIKAJĄCA Z,\nNIE ZWIĄZANE Z OPROGRAMOWANIEM LUB KORZYSTANIEM LUB INNYMI CZYNNOŚCIAMI W\nOPROGRAMOWANIE.",
+                "zh-cn": "* 作为适配器创建模板首次发布\n\n＃＃ 执照\n麻省理工学院执照\n\n版权所有 (c) 2021 korbinian <korbinian@schuh-zechmeister.de>\n\n特此许可免费授予任何获得副本的人\n本软件和相关文档文件（“软件”），以处理\n在软件中不受限制，包括但不限于权利\n使用、复制、修改、合并、发布、分发、再许可和/或出售\n软件的副本，并允许软件所属的人\n提供这样做，但须符合以下条件：\n\n以上版权声明和本许可声明应包含在所有\n本软件的副本或重要部分。\n\n该软件“按原样”提供，不提供任何形式的明示或保证\n暗示，包括但不限于适销性保证，\n适用于特定目的且不侵权。在任何情况下都不得\n作者或版权持有人应对任何索赔、损害或其他\n责任，无论是在合同诉讼、侵权行为或其他方面，由以下原因引起的，\n与本软件或本软件中的使用或其他交易无关或与之相关\n软件。"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "OpenWeatherMaps 2",
+            "de": "OpenWeatherMaps 2",
+            "ru": "OpenWeatherMaps 2",
+            "pt": "OpenWeatherMaps 2",
+            "nl": "OpenWeerkaarten 2",
+            "fr": "OpenWeatherMaps 2",
+            "it": "OpenWeatherMaps 2",
+            "es": "OpenWeatherMaps 2",
+            "pl": "OpenWeatherMaps 2",
+            "zh-cn": "OpenWeatherMaps 2"
+        },
+        "desc": {
+            "en": "List results of the openweathermaps onecall api",
+            "de": "Listenergebnisse der openweathermaps onecall api",
+            "ru": "Список результатов api openweathermaps onecall",
+            "pt": "Lista os resultados da API onecall openweathermaps",
+            "nl": "Lijst resultaten van de openweathermaps onecall api",
+            "fr": "Liste des résultats de l'API openweathermaps onecall",
+            "it": "Elenco risultati di openweathermaps onecall api",
+            "es": "Listar resultados de la api openweathermaps onecall",
+            "pl": "Lista wyników openweathermaps onecall api",
+            "zh-cn": "列出 openweathermaps onecall api 的结果"
+        },
+        "authors": [
+            "korbinian <korbinian@schuh-zechmeister.de>"
+        ],
+        "keywords": [
+            "weather",
+            "openweathermaps"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "build/main.js",
+        "icon": "openweathermaps2.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/xKorbix/ioBroker.openweathermaps2/master/admin/openweathermaps2.png",
+        "readme": "https://github.com/xKorbix/ioBroker.openweathermaps2/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "schedule": "10 * * * *",
+        "type": "weather",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "OpenWeatherMaps 2",
-      "de": "OpenWeatherMaps 2",
-      "ru": "OpenWeatherMaps 2",
-      "pt": "OpenWeatherMaps 2",
-      "nl": "OpenWeerkaarten 2",
-      "fr": "OpenWeatherMaps 2",
-      "it": "OpenWeatherMaps 2",
-      "es": "OpenWeatherMaps 2",
-      "pl": "OpenWeatherMaps 2",
-      "zh-cn": "OpenWeatherMaps 2"
+    "native": {
+        "apikey": "",
+        "useImperial": false,
+        "lang": "de",
+        "lat": "49",
+        "lon": "10"
     },
-    "desc": {
-      "en": "List results of the openweathermaps onecall api",
-      "de": "Listenergebnisse der openweathermaps onecall api",
-      "ru": "Список результатов api openweathermaps onecall",
-      "pt": "Lista os resultados da API onecall openweathermaps",
-      "nl": "Lijst resultaten van de openweathermaps onecall api",
-      "fr": "Liste des résultats de l'API openweathermaps onecall",
-      "it": "Elenco risultati di openweathermaps onecall api",
-      "es": "Listar resultados de la api openweathermaps onecall",
-      "pl": "Lista wyników openweathermaps onecall api",
-      "zh-cn": "列出 openweathermaps onecall api 的结果"
-    },
-    "authors": [
-      "korbinian <korbinian@schuh-zechmeister.de>"
-    ],
-    "keywords": [
-      "weather",
-      "openweathermaps"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "build/main.js",
-    "icon": "openweathermaps2.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/xKorbix/ioBroker.openweathermaps2/master/admin/openweathermaps2.png",
-    "readme": "https://github.com/xKorbix/ioBroker.openweathermaps2/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "schedule",
-    "schedule": "10 * * * *",
-    "type": "weather",
-    "compact": true,
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "materialize": true,
-    "dependencies": [
-      {
-        "js-controller": ">=2.0.0"
-      }
-    ]
-  },
-  "native": {
-    "apikey": "",
-    "useImperial": false,
-    "lang": "de",
-    "lat": "49",
-    "lon": "10"
-  },
-  "objects": [],
-  "instanceObjects": []
+    "objects": [],
+    "instanceObjects": []
 }

@@ -104,7 +104,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 0.0.4 (2021-08-20)
 * (korbinian) added schedule to io-package
 * (korbinian) removed build from gitignore
 
