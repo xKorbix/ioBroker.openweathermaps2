@@ -105,7 +105,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
 -->
 
 ### **WORK IN PROGRESS**
-* (korbinian) initial release
+* (korbinian) first release as an adapter-creation template
 
 ## License
 MIT License
