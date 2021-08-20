@@ -241,7 +241,7 @@ class Openweathermaps2 extends utils.Adapter {
     private async onReady(): Promise<void> {
 
         if (!await this.initConfig()) {
-            this.stop?.bind(this);
+            setTimeout(() => this.stop?.(), 1000);
             return;
         }
 
@@ -266,8 +266,8 @@ class Openweathermaps2 extends utils.Adapter {
         await this.fillData(response.data);
         await this.fillCurrentData(response.data);
 
-
-        this.stop?.bind(this);
+        this.log.info('Data processed.');
+        setTimeout(() => this.stop?.(), 1000);
     }
 
     /**
@@ -420,7 +420,7 @@ class Openweathermaps2 extends utils.Adapter {
             this.log.error("Lat/Lon invalid.");
             return false;
         }
-        this.log.info('config lat, long: ' + this.config.lat + ', ' + this.config.lon);
+        this.log.debug('config lat, long: ' + this.config.lat + ', ' + this.config.lon);
 
         await this.getForeignObject('system.config', (err, systemConfig) => {
             this.config.lang = systemConfig?.common.language || 'de';
@@ -429,7 +429,7 @@ class Openweathermaps2 extends utils.Adapter {
                 this.log.error("Language invalid.");
                 return false;
             }
-            this.log.info('config lang: ' + this.config.lang);
+            this.log.debug('config lang: ' + this.config.lang);
         });
 
         if(this.config.apikey.length == 0)
@@ -437,9 +437,9 @@ class Openweathermaps2 extends utils.Adapter {
             this.log.error("Apikey invalid.");
             return false;
         }
-        this.log.info('config apikey: ' + this.config.apikey);
+        this.log.debug('config apikey: ' + this.config.apikey);
 
-        this.log.info('config useImperial: ' + this.config.useImperial);
+        this.log.debug('config useImperial: ' + this.config.useImperial);
         return true;
     }
 }
