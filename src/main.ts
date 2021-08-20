@@ -241,6 +241,7 @@ class Openweathermaps2 extends utils.Adapter {
     private async onReady(): Promise<void> {
 
         if (!await this.initConfig()) {
+            this.stop?.bind(this);
             return;
         }
 
@@ -265,6 +266,8 @@ class Openweathermaps2 extends utils.Adapter {
         await this.fillData(response.data);
         await this.fillCurrentData(response.data);
 
+
+        this.stop?.bind(this);
     }
 
     /**

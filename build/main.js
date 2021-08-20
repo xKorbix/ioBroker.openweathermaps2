@@ -295,7 +295,9 @@ class Openweathermaps2 extends utils.Adapter {
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
+        var _a, _b;
         if (!await this.initConfig()) {
+            (_a = this.stop) === null || _a === void 0 ? void 0 : _a.bind(this);
             return;
         }
         // In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -314,6 +316,7 @@ class Openweathermaps2 extends utils.Adapter {
         }
         await this.fillData(response.data);
         await this.fillCurrentData(response.data);
+        (_b = this.stop) === null || _b === void 0 ? void 0 : _b.bind(this);
     }
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
