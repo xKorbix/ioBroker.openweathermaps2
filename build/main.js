@@ -295,9 +295,8 @@ class Openweathermaps2 extends utils.Adapter {
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
-        var _a, _b;
         if (!await this.initConfig()) {
-            (_a = this.stop) === null || _a === void 0 ? void 0 : _a.bind(this);
+            setTimeout(() => { var _a; return (_a = this.stop) === null || _a === void 0 ? void 0 : _a.call(this); }, 1000);
             return;
         }
         // In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -316,7 +315,8 @@ class Openweathermaps2 extends utils.Adapter {
         }
         await this.fillData(response.data);
         await this.fillCurrentData(response.data);
-        (_b = this.stop) === null || _b === void 0 ? void 0 : _b.bind(this);
+        this.log.info('Data processed.');
+        setTimeout(() => { var _a; return (_a = this.stop) === null || _a === void 0 ? void 0 : _a.call(this); }, 1000);
     }
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -403,21 +403,21 @@ class Openweathermaps2 extends utils.Adapter {
             this.log.error("Lat/Lon invalid.");
             return false;
         }
-        this.log.info('config lat, long: ' + this.config.lat + ', ' + this.config.lon);
+        this.log.debug('config lat, long: ' + this.config.lat + ', ' + this.config.lon);
         await this.getForeignObject('system.config', (err, systemConfig) => {
             this.config.lang = (systemConfig === null || systemConfig === void 0 ? void 0 : systemConfig.common.language) || 'de';
             if (this.config.lang.length == 0 || this.languages.indexOf(this.config.lang) < 0) {
                 this.log.error("Language invalid.");
                 return false;
             }
-            this.log.info('config lang: ' + this.config.lang);
+            this.log.debug('config lang: ' + this.config.lang);
         });
         if (this.config.apikey.length == 0) {
             this.log.error("Apikey invalid.");
             return false;
         }
-        this.log.info('config apikey: ' + this.config.apikey);
-        this.log.info('config useImperial: ' + this.config.useImperial);
+        this.log.debug('config apikey: ' + this.config.apikey);
+        this.log.debug('config useImperial: ' + this.config.useImperial);
         return true;
     }
 }
