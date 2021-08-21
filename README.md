@@ -104,7 +104,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 0.0.5 (2021-08-22)
 * (korbinian) added basic calculations
 * (korbinian) readded build
 * (korbinian) changed schedule, added allowInit

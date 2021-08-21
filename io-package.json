@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "openweathermaps2",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "news": {
+            "0.0.5": {
+                "en": "added basic calculations\nreadded build\nchanged schedule, added allowInit",
+                "de": "grundlegende Berechnungen hinzugefügt\ngelesener Build\nZeitplan geändert, allowInit hinzugefügt",
+                "ru": "добавлены базовые расчеты\nпрочитанная сборка\nизменено расписание, добавлен allowInit",
+                "pt": "cálculos básicos adicionados\nconstrução readded\nagendamento alterado, adicionado allowInit",
+                "nl": "basisberekeningen toegevoegd\ngelezen build\ngewijzigd schema, allowInit toegevoegd",
+                "fr": "ajout de calculs de base\nversion relue\nhoraire modifié, ajout de allowInit",
+                "it": "calcoli di base aggiunti\nbuild letta\npianificazione modificata, aggiunto allowInit",
+                "es": "cálculos básicos añadidos\ncompilación readded\ncambio de horario, agregado allowInit",
+                "pl": "dodano podstawowe obliczenia\nprzeczytana kompilacja\nzmieniony harmonogram, dodano allowInit",
+                "zh-cn": "添加了基本计算\n读取构建\n更改了计划，添加了 allowInit"
+            },
             "0.0.4": {
                 "en": "added schedule to io-package\nremoved build from gitignore",
                 "de": "Zeitplan zum io-Paket hinzugefügt\nBuild von gitignore entfernt",
