@@ -52,7 +52,20 @@ class DataMapping {
                 return data * 100;
         }
     }
-    static fillIobData() {
+    static async setAdapterData(data, results, adapter) {
+        if (data.length !== results.length) {
+            adapter.log.error('To less data for expected results list (got: ' + data.length + ' expected: ' + results.length);
+            return;
+        }
+        for (let idx = 0; idx < results.length; idx++) {
+            if (data[idx] != null) {
+                adapter.log.debug('Result for ' + results[idx].name + ' is ' + data[idx]);
+                await adapter.setStateAsync(exports.calculations.root + '.' + results[idx].name, { val: data[idx], ack: true });
+            }
+            else {
+                adapter.log.debug('Result for ' + results[idx].name + ' is empty');
+            }
+        }
     }
 }
 exports.DataMapping = DataMapping;
@@ -95,7 +108,7 @@ exports.currentDataConfig = {
         },
         {
             name: 'feels_like',
-            pretty_name: 'Feeled temperature',
+            pretty_name: 'Felt temperature',
             datatype: Datatypes.temperature
         },
         {
@@ -182,7 +195,7 @@ exports.configuredDataList = [
             },
             {
                 name: 'feels_like',
-                pretty_name: 'Feeled temperature',
+                pretty_name: 'Felt temperature',
                 datatype: Datatypes.temperature
             },
             {
@@ -336,7 +349,7 @@ exports.configuredDataList = [
             },
             {
                 name: 'feels_like',
-                pretty_name: 'Feeled temperature',
+                pretty_name: 'Felt temperature',
                 datatype: Datatypes.temperature,
                 rawsouce: 'feels_like.day'
             },
@@ -366,39 +379,8 @@ exports.calculations = {
                 }
             ],
             calculate: async function (adapter) {
-                let states = await adapter.getStatesAsync('minutely.*.precipitation');
-                if (states == null) {
-                    adapter.log.error('getStatesAsync(\'minutely.*.precipitation\') failed');
-                    return;
-                }
-                let startIdx = -1;
-                let endIdx = Object.keys(states).length;
-                let volume_sum = 0;
-                for (let idx = 0; idx < Object.keys(states).length; idx++) {
-                    let state = states[adapter.namespace + '.minutely.' + idx + '.precipitation'];
-                    if (state == null || state.val == null)
-                        continue;
-                    if (state.val > 1) {
-                        if (startIdx < 0)
-                            startIdx = idx;
-                        volume_sum += state.val;
-                    }
-                    else if (startIdx >= 0 && state.val === 0) {
-                        endIdx = idx;
-                        break;
-                    }
-                }
-                if (startIdx < 0)
-                    return;
-                volume_sum = Math.round(volume_sum * 100) / 100;
-                let startDate = await adapter.getStateAsync('minutely.' + startIdx + '.dt');
-                let endDate = await adapter.getStateAsync('minutely.' + endIdx + '.dt');
-                if (startDate == null || startDate.val == null || endDate == null || endDate.val == null)
-                    return;
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[0].name, { val: startDate.val.toString(), ack: true });
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[1].name, { val: endDate.val.toString(), ack: true });
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[3].name, { val: volume_sum, ack: true });
-                adapter.log.info('Rain minutes: ' + startIdx + ' - ' + endIdx + ' | ' + volume_sum);
+                let range_from = 1, range_to = 0;
+                await calculation_nextRainMinutes(this, adapter, range_from, range_to);
             }
         },
         {
@@ -425,77 +407,171 @@ exports.calculations = {
                 }
             ],
             calculate: async function (adapter) {
-                let states2 = await adapter.getStatesAsync('hourly.*.precipitation.*');
-                if (states2 == null) {
-                    adapter.log.error('getStatesAsync(\'hourly.*.precipitation.pop\') failed');
-                    return;
+                let range_from = 25, range_to = 2;
+                await calculation_nextRainHours_Days(this, adapter, range_from, range_to, 'hourly');
+            }
+        },
+        {
+            results: [
+                {
+                    name: 'nextStrongWind.date_start',
+                    pretty_name: 'Datetime wind starts',
+                    datatype: Datatypes.date
+                },
+                {
+                    name: 'nextStrongWind.date_end',
+                    pretty_name: 'Datetime wind ends',
+                    datatype: Datatypes.date
+                },
+                {
+                    name: 'nextStrongWind.speed_avg',
+                    pretty_name: 'Wind speed average',
+                    datatype: Datatypes.speed_ms
+                },
+                {
+                    name: 'nextStrongWind.speed_max',
+                    pretty_name: 'Wind speed max',
+                    datatype: Datatypes.speed_ms
                 }
-                let startIdx = -1;
-                let endIdx = Object.keys(states2).length;
-                let volume_sum = 0;
-                let volume_pop = 0;
-                for (let idx = 0; idx < Object.keys(states2).length; idx++) {
-                    let statePop = states2[adapter.namespace + '.hourly.' + idx + '.precipitation.pop'];
-                    let stateRain = states2[adapter.namespace + '.hourly.' + idx + '.precipitation.rain'];
-                    let stateSnow = states2[adapter.namespace + '.hourly.' + idx + '.precipitation.snow'];
-                    if (statePop == null || statePop.val == null)
-                        continue;
-                    if ((stateRain == null || stateRain.val == null) && (stateSnow == null || stateSnow.val == null))
-                        continue;
-                    if (statePop.val > 25) {
-                        if (startIdx < 0)
-                            startIdx = idx;
-                        if (stateRain != null && stateRain.val != null)
-                            volume_sum += stateRain.val;
-                        if (stateSnow != null && stateSnow.val != null)
-                            volume_sum += stateSnow.val;
-                        volume_pop += statePop.val;
-                    }
-                    else if (startIdx >= 0 && statePop.val <= 2) {
-                        endIdx = idx;
-                        break;
-                    }
+            ],
+            calculate: async function (adapter) {
+                let range_from = 10, range_to = 5;
+                await calculation_nextStrongWind(this, adapter, range_from, range_to);
+            }
+        },
+        {
+            results: [
+                {
+                    name: 'nextRainDays.date_start',
+                    pretty_name: 'Datetime rain starts',
+                    datatype: Datatypes.date
+                },
+                {
+                    name: 'nextRainDays.date_end',
+                    pretty_name: 'Datetime rain ends',
+                    datatype: Datatypes.date
+                },
+                {
+                    name: 'nextRainDays.precipitation',
+                    pretty_name: 'Rain precipitation',
+                    datatype: Datatypes.percentage
+                },
+                {
+                    name: 'nextRainDays.volume',
+                    pretty_name: 'Rain volume',
+                    datatype: Datatypes.volume_mm
                 }
-                if (startIdx < 0)
-                    return;
-                let popAvg = Math.round(volume_pop / (endIdx - startIdx));
-                volume_sum = Math.round(volume_sum * 100) / 100;
-                let startDate = await adapter.getStateAsync('hourly.' + startIdx + '.dt');
-                let endDate = await adapter.getStateAsync('hourly.' + endIdx + '.dt');
-                if (startDate == null || startDate.val == null || endDate == null || endDate.val == null)
-                    return;
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[0].name, { val: startDate.val.toString(), ack: true });
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[1].name, { val: endDate.val.toString(), ack: true });
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[2].name, { val: popAvg, ack: true });
-                await adapter.setStateAsync(exports.calculations.root + '.' + this.results[3].name, { val: volume_sum, ack: true });
-                adapter.log.info('Rain hours: ' + startIdx + ' - ' + endIdx + ' | ' + volume_sum + ', ' + popAvg);
+            ],
+            calculate: async function (adapter) {
+                let range_from = 25, range_to = 2;
+                await calculation_nextRainHours_Days(this, adapter, range_from, range_to, 'daily');
             }
         },
     ],
     root: 'calculation'
 };
-/*,
-                    name: 'nextRainStarts60Min',
-            pretty_name: 'Date when rain starts',
-            datatype: Datatypes.date,
-            calculationInput: {thresh: 1},
-            calculate: () =>
-            {
-                this.info.log(this);
-            }
-        {
-            name: 'nextRainStarts48H',
-            pretty_name: 'Date when rain starts',
-            datatype: Datatypes.date,
-            calculationInput: {thresh: 0.25},
-            calcFunction: (data: any, input: any) => Calculation.next48HPrec
-        },
-        {
-            name: 'next48HWind',
-            pretty_name: 'Date when wind is stronger',
-            datatype: Datatypes.date,
-            calculationInput: {thresh: 5},
-            calcFunction: (data: any, input: any) => Calculation.next48HWind
-        },*/
+const calculation_nextRainMinutes = async function (self, adapter, range_from, range_to) {
+    var _a, _b;
+    let states = await adapter.getStatesAsync('minutely.*.precipitation');
+    if (states == null) {
+        adapter.log.error('getStatesAsync(\'minutely.*.precipitation\') failed');
+        return;
+    }
+    let startIdx = -1;
+    let endIdx = Object.keys(states).length - 1;
+    let volume_sum = 0;
+    for (let idx = 0; idx < Object.keys(states).length; idx++) {
+        let state = states[adapter.namespace + '.minutely.' + idx + '.precipitation'];
+        if ((state === null || state === void 0 ? void 0 : state.val) == null)
+            continue;
+        if (state.val > range_from) {
+            if (startIdx < 0)
+                startIdx = idx;
+            volume_sum += state.val;
+        }
+        else if (startIdx >= 0 && state.val <= range_to) {
+            endIdx = idx;
+            break;
+        }
+    }
+    if (startIdx < 0)
+        return;
+    volume_sum = Math.round(volume_sum * 100) / 100;
+    let startDate = await adapter.getStateAsync('minutely.' + startIdx + '.dt');
+    let endDate = await adapter.getStateAsync('minutely.' + endIdx + '.dt');
+    await DataMapping.setAdapterData([(_a = startDate === null || startDate === void 0 ? void 0 : startDate.val) === null || _a === void 0 ? void 0 : _a.toString(), (_b = endDate === null || endDate === void 0 ? void 0 : endDate.val) === null || _b === void 0 ? void 0 : _b.toString(), volume_sum], self.results, adapter);
+};
+const calculation_nextStrongWind = async function (self, adapter, range_from, range_to) {
+    var _a, _b;
+    let states = await adapter.getStatesAsync('hourly.*.wind_speed');
+    if (states == null) {
+        adapter.log.error('getStatesAsync(\'hourly.*.wind_speed\') failed');
+        return;
+    }
+    let startIdx = -1;
+    let endIdx = Object.keys(states).length - 1;
+    let speed_sum = 0, speed_max = 0;
+    for (let idx = 0; idx < Object.keys(states).length; idx++) {
+        let state = states[adapter.namespace + '.hourly.' + idx + '.wind_speed'];
+        if ((state === null || state === void 0 ? void 0 : state.val) == null)
+            continue;
+        if (state.val > range_from) {
+            if (startIdx < 0)
+                startIdx = idx;
+            speed_sum += state.val;
+            if (state.val > speed_max)
+                speed_max = state.val;
+        }
+        else if (startIdx >= 0 && state.val <= range_to) {
+            endIdx = idx;
+            break;
+        }
+    }
+    if (startIdx < 0)
+        return;
+    speed_max = Math.round(speed_max * 100) / 100;
+    let speed_avg = Math.round((speed_sum / (endIdx - startIdx)) * 100) / 100;
+    let startDate = await adapter.getStateAsync('hourly.' + startIdx + '.dt');
+    let endDate = await adapter.getStateAsync('hourly.' + endIdx + '.dt');
+    await DataMapping.setAdapterData([(_a = startDate === null || startDate === void 0 ? void 0 : startDate.val) === null || _a === void 0 ? void 0 : _a.toString(), (_b = endDate === null || endDate === void 0 ? void 0 : endDate.val) === null || _b === void 0 ? void 0 : _b.toString(), speed_avg, speed_max], self.results, adapter);
+};
+const calculation_nextRainHours_Days = async function (self, adapter, range_from, range_to, hour_day) {
+    var _a, _b;
+    let states2 = await adapter.getStatesAsync(hour_day + '.*.precipitation.*');
+    if (states2 == null) {
+        adapter.log.error('getStatesAsync(\'' + hour_day + '.*.precipitation.*\') failed');
+        return;
+    }
+    let startIdx = -1;
+    let endIdx = Object.keys(states2).length - 1;
+    let volume_sum = 0, volume_pop = 0;
+    for (let idx = 0; idx < Object.keys(states2).length; idx++) {
+        let statePop = states2[adapter.namespace + '.' + hour_day + '.' + idx + '.precipitation.pop'];
+        let stateRain = states2[adapter.namespace + '.' + hour_day + '.' + idx + '.precipitation.rain'];
+        let stateSnow = states2[adapter.namespace + '.' + hour_day + '.' + idx + '.precipitation.snow'];
+        if (((statePop === null || statePop === void 0 ? void 0 : statePop.val) == null) || ((stateRain === null || stateRain === void 0 ? void 0 : stateRain.val) == null && (stateSnow === null || stateSnow === void 0 ? void 0 : stateSnow.val) == null))
+            continue;
+        if (statePop.val > range_from) {
+            if (startIdx < 0)
+                startIdx = idx;
+            if (stateRain != null && stateRain.val != null)
+                volume_sum += stateRain.val;
+            if (stateSnow != null && stateSnow.val != null)
+                volume_sum += stateSnow.val;
+            volume_pop += statePop.val;
+        }
+        else if (startIdx >= 0 && statePop.val <= range_to) {
+            endIdx = idx;
+            break;
+        }
+    }
+    if (startIdx < 0)
+        return;
+    let popAvg = Math.round(volume_pop / (endIdx - startIdx));
+    volume_sum = Math.round(volume_sum * 100) / 100;
+    let startDate = await adapter.getStateAsync(hour_day + '.' + startIdx + '.dt');
+    let endDate = await adapter.getStateAsync(hour_day + '.' + endIdx + '.dt');
+    await DataMapping.setAdapterData([(_a = startDate === null || startDate === void 0 ? void 0 : startDate.val) === null || _a === void 0 ? void 0 : _a.toString(), (_b = endDate === null || endDate === void 0 ? void 0 : endDate.val) === null || _b === void 0 ? void 0 : _b.toString(), popAvg, volume_sum], self.results, adapter);
+};
 exports.languages = ['af', 'al', 'ar', 'az', 'bg', 'ca', 'cz', 'da', 'de', 'el', 'en', 'eu', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'kr', 'la', 'lt', 'mk', 'no', 'nl', 'pl', 'pt', 'pt', 'ro', 'ru', 'sv', 'sk', 'sl', 'sp', 'sr', 'th', 'tr', 'ua', 'uk', 'vi', 'zh_cn', 'zh_tw', 'zu'];
 //# sourceMappingURL=data.js.map
